@@ -7,6 +7,7 @@ import com.dnastack.audit.model.*;
 import com.dnastack.ga4gh.dataconnect.ApplicationConfig;
 import com.dnastack.ga4gh.dataconnect.DataModelSupplier;
 import com.dnastack.ga4gh.dataconnect.adapter.trino.exception.*;
+import com.dnastack.ga4gh.dataconnect.client.modelregistry.FileDataModelSupplier;
 import com.dnastack.ga4gh.dataconnect.model.*;
 import com.dnastack.ga4gh.dataconnect.repository.QueryJob;
 import com.dnastack.ga4gh.dataconnect.repository.QueryJobDao;
@@ -41,6 +42,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+import java.util.Arrays;
 
 @Slf4j
 @Configuration
@@ -85,11 +87,16 @@ public class TrinoDataConnectAdapter {
         this.throwableTransformer = throwableTransformer;
         this.applicationConfig = applicationConfig;
         this.auditEventLogger = auditEventLogger;
-        this.dataModelSuppliers = dataModelSuppliers;
+        //this.dataModelSuppliers = dataModelSuppliers;
         this.tracer = tracer;
         this.objectMapper = new ObjectMapper();
         objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        
+        // Manually add FileDataModelSupplier for now
+        this.dataModelSuppliers = Arrays.copyOf(dataModelSuppliers, dataModelSuppliers.length + 1);
+        this.dataModelSuppliers[this.dataModelSuppliers.length - 1] = new FileDataModelSupplier();
+        
     }
 
     private boolean hasMore(TableData tableData) {
@@ -891,8 +898,9 @@ public class TrinoDataConnectAdapter {
     }
 
     private DataModel getDataModelFromSupplier(String tableName) {
-        for (DataModelSupplier dataModelSupplier : dataModelSuppliers) {
-            final var dataModel = dataModelSupplier.supply(tableName);
+    	for (DataModelSupplier dataModelSupplier : dataModelSuppliers) {
+    		log.info("Looking for model using {}", dataModelSupplier.getClass().getSimpleName());
+    		final var dataModel = dataModelSupplier.supply(tableName);
             if (dataModel != null) {
                 return dataModel;
             }

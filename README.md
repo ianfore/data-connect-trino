@@ -22,7 +22,7 @@ mvn clean package
 ```
 
 ### Configure
- 
+
 Set these two environment variables.
 ```$xslt
 TRINO_DATASOURCE_URL=https://<your-trino-server>
@@ -114,7 +114,7 @@ The following is a quick start for local development:
 ```
 docker pull postgres:latest
 docker run -p 5432:5432 --rm --name ga4ghsearchadapterpresto -e POSTGRES_USER=ga4ghsearchadapterpresto -e POSTGRES_DB=ga4ghsearchadapterpresto -e POSTGRES_PASSWORD=ga4ghsearchadapterpresto postgres
-``` 
+```
 ## Trino Source Configuration
 
 There are a number of required configuration properties that need to be set in order to communicate with a trino deployment. 
@@ -134,3 +134,22 @@ APP_AUTH_TRINOOAUTHCLIENT_CLIENTSECRET="your-client-secret"
 APP_AUTH_TRINOOAUTHCLIENT_AUDIENCE="your-requested-audience"
 APP_AUTH_TRINOOAUTHCLIENT_SCOPES="your space delimited requested scopes"
 ```
+
+## Data Model Supplier Configuration
+
+A key feature of Data Connect is the semantic description of data. The models are provided by the /info endpoint as a json schema. DataModelSupplier
+
+
+
+### Providing models from files
+
+FileDataModelSupplier. the schema files should be placed in /models. This directory may be set up within the Docker container or or mounted as an external volume when the container is started.
+
+### Indexing Service
+
+If you are using the the indexing service the data models are provided by IndexingServiceDataModelSupplier.  
+
+### Tables Registry - deprecated
+
+TablesRegistryDataModelSupplier
+

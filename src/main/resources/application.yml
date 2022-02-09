@@ -20,7 +20,7 @@ app:
   url: http://localhost:${server.port}
   service-info:
     id:
-    name: "GA4GH Discovery Search API"
+    name: "GA4GH Data Connect API"
     description:
     documentation-url:
     contact-url:
