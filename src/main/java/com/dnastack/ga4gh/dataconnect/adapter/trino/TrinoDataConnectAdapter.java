@@ -82,22 +82,25 @@ public class TrinoDataConnectAdapter {
         DataModelSupplier[] dataModelSuppliers,
         Tracer tracer
     ) {
-        this.client = client;
+
+		/*
+		 * System.out.println("Data model suppliers"); for (int i = 0; i <
+		 * dataModelSuppliers.length; i++) {
+		 * 
+		 * // accessing each element of array DataModelSupplier s =
+		 * dataModelSuppliers[i]; System.out.print(s.getClass().getSimpleName()); }
+		 */    	  
+    	this.client = client;
         this.jdbi = jdbi;
         this.throwableTransformer = throwableTransformer;
         this.applicationConfig = applicationConfig;
         this.auditEventLogger = auditEventLogger;
-        //this.dataModelSuppliers = dataModelSuppliers;
+        this.dataModelSuppliers = dataModelSuppliers;
         this.tracer = tracer;
         this.objectMapper = new ObjectMapper();
         objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        
-        // Manually add FileDataModelSupplier for now
-        this.dataModelSuppliers = Arrays.copyOf(dataModelSuppliers, dataModelSuppliers.length + 1);
-        this.dataModelSuppliers[this.dataModelSuppliers.length - 1] = new FileDataModelSupplier();
-        
-    }
+      }
 
     private boolean hasMore(TableData tableData) {
         if (tableData.getPagination() != null && tableData.getPagination().getNextPageUrl() != null) {

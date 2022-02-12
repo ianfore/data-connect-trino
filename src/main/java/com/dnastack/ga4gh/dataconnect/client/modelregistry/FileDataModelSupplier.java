@@ -7,6 +7,9 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
 import com.dnastack.ga4gh.dataconnect.DataModelSupplier;
 import com.dnastack.ga4gh.dataconnect.model.DataModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +17,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Configuration
+@ConfigurationProperties("app.file-datamodel-supplier")
 public class FileDataModelSupplier implements DataModelSupplier {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -32,21 +37,5 @@ public class FileDataModelSupplier implements DataModelSupplier {
         	log.error("Failed to load or convert DataModel for {}", tableName, ex);
         	return null;
         }
-    }
-    
-    private File getFileFromResource(String fileName) throws URISyntaxException{
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource(fileName);
-        if (resource == null) {
-            throw new IllegalArgumentException("file not found! " + fileName);
-        } else {
-
-            // failed if files have whitespaces or special characters
-            //return new File(resource.getFile());
-
-            return new File(resource.toURI());
-        }
-
-    }
+    }    
 }
