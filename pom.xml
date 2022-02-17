@@ -198,7 +198,18 @@
 			<artifactId>jackson-dataformat-xml</artifactId>
 			<version>2.13.0</version>
 		</dependency>
-
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.13.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.13.1</version>
+		</dependency>
+		
 		<!--Feign -->
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
@@ -237,6 +248,24 @@
 		<dependency>
 			<groupId>org.jdbi</groupId>
 			<artifactId>jdbi3-jackson2</artifactId>
+		</dependency>
+		
+		<!--JAXB -->
+		<dependency>
+    		<groupId>javax.xml.bind</groupId>
+    		<artifactId>jaxb-api</artifactId>
+   			 <version>2.3.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.sun.xml.bind</groupId>
+    		<artifactId>jaxb-impl</artifactId>
+    		<version>2.4.0-b180830.0438</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.sun.istack/istack-commons-runtime -->
+		<dependency>
+		    <groupId>com.sun.istack</groupId>
+		    <artifactId>istack-commons-runtime</artifactId>
+		    <version>4.0.1</version>
 		</dependency>
 
 		<!--Supporting -->

@@ -1,0 +1,9 @@
+[
+    {"bigquery.gecco_crc_susceptibility.subject_phenotypes": "phs001554/phs001554.v1.p1/pheno_variable_summaries/phs001554.v1.pht007609.v1.GECCO_CRC_Susceptibility_Subject_Phenotypes.data_dict.xml"},
+    {"bigquery.scr_gecco_susceptibility.subject_phenotypes_multi": "phs001554/phs001554.v1.p1/pheno_variable_summaries/phs001554.v1.pht007609.v1.GECCO_CRC_Susceptibility_Subject_Phenotypes.data_dict.xml"},
+    {"dbgap_demo.scr_gecco_susceptibility.subject_phenotypes_multi": "phs001554/phs001554.v1.p1/pheno_variable_summaries/phs001554.v1.pht007609.v1.GECCO_CRC_Susceptibility_Subject_Phenotypes.data_dict.xml"},
+    {"dbgap_demo.scr_gecco_susceptibility.sample_attributes_multi": "phs001554/phs001554.v1.p1/pheno_variable_summaries/phs001554.v1.pht007610.v1.GECCO_CRC_Susceptibility_Sample_Attributes.data_dict.xml"},
+    {"dbgap_demo.scr_gecco_susceptibility.sample_multi": "phs001554/phs001554.v1.p1/pheno_variable_summaries/phs001554.v1.pht007608.v1.GECCO_CRC_Susceptibility_Sample.data_dict.xml"},
+    {"dbgap_demo.scr_gecco_susceptibility.subject_multi": "phs001554/phs001554.v1.p1/pheno_variable_summaries/phs001554.v1.pht007607.v1.GECCO_CRC_Susceptibility_Subject.data_dict.xml"},
+]
+
