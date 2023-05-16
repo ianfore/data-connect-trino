@@ -901,9 +901,9 @@ public class TrinoDataConnectAdapter {
     }
 
     private DataModel getDataModelFromSupplier(String tableName) {
-    	for (DataModelSupplier dataModelSupplier : dataModelSuppliers) {
-    		log.info("Looking for model using {}", dataModelSupplier.getClass().getSimpleName());
-    		final var dataModel = dataModelSupplier.supply(tableName);
+        for (DataModelSupplier dataModelSupplier : dataModelSuppliers) {
+        	log.info("Looking for model with " + dataModelSupplier.getClass().getSimpleName());
+        	final var dataModel = dataModelSupplier.supply(tableName);
             if (dataModel != null) {
                 return dataModel;
             }

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="data_table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="description" minOccurs="0"/>
+        <xs:element maxOccurs="unbounded" ref="unique_key" minOccurs="0"/>
+        <xs:element maxOccurs="unbounded" ref="variable"/>
+        <xs:element ref="has_coll" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="date_created" use="required"/>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="participant_set" use="required" type="xs:integer"/>
+      <xs:attribute name="study_id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="unique_key">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:NCName">
+          <xs:attribute name="phv" use="required" type="xs:integer"/>
+          <xs:attribute name="version" use="required" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+
+
+  <xs:element name="variable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="description"/>
+        <xs:element ref="type" minOccurs="0"/>
+        <xs:element ref="unit" minOccurs="0"/>
+        <xs:element ref="comment" minOccurs="0"/>
+        <xs:element ref="logical_min" minOccurs="0"/>
+        <xs:element ref="logical_max" minOccurs="0"/>
+        <xs:element ref="coll_interval" minOccurs="0"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="value"/>
+      </xs:sequence>
+
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="name" type="xs:string"/>
+
+
+  <xs:element name="type">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="string"/>
+        <xs:enumeration value="String"/>
+        <xs:enumeration value="char"/>
+        <xs:enumeration value="integer"/>
+        <xs:enumeration value="Integer"/>
+        <xs:enumeration value="float"/>
+        <xs:enumeration value="decimal"/>
+        <xs:enumeration value="Decimal"/>
+        <xs:enumeration value="numeric"/>
+        <xs:enumeration value="num"/>
+        <xs:enumeration value="Num"/>
+        <xs:enumeration value="encoded value"/>
+        <xs:enumeration value="encoded"/>
+        <xs:enumeration value="decimal, encoded value"/>
+        <xs:enumeration value="integer, encoded value"/>
+        <xs:enumeration value="encoded values"/>
+        <xs:enumeration value="datetime"/>
+        <xs:enumeration value="2 to 41"/>
+        <xs:enumeration value="Alphabetical"/>
+        <xs:enumeration value="binary values"/>
+        <xs:enumeration value="binary"/>
+        <xs:enumeration value="boolean"/>
+        <xs:enumeration value="byte"/>
+        <xs:enumeration value="categorical"/>
+        <xs:enumeration value="Char"/>
+        <xs:enumeration value="character"/>
+        <xs:enumeration value="Coded String"/>
+        <xs:enumeration value="coded value"/>
+        <xs:enumeration value="coded;string"/>
+        <xs:enumeration value="coded"/>
+        <xs:enumeration value="continuous integer"/>
+        <xs:enumeration value="date"/>
+        <xs:enumeration value="DateTime"/>
+        <xs:enumeration value="decimal, calculated value"/>
+        <xs:enumeration value="decimal, calculated"/>
+        <xs:enumeration value="decimal, encoded string"/>
+        <xs:enumeration value="Decimal, encoded value"/>
+        <xs:enumeration value="decimal, encoded"/>
+        <xs:enumeration value="decimal, string"/>
+        <xs:enumeration value="decimal,encoded value"/>
+        <xs:enumeration value="Decimal"/>
+        <xs:enumeration value="decmal"/>
+        <xs:enumeration value="demimal"/>
+        <xs:enumeration value="Dichotomous"/>
+        <xs:enumeration value="double"/>
+        <xs:enumeration value="empty field"/>
+        <xs:enumeration value="Encode value"/>
+        <xs:enumeration value="encode values"/>
+        <xs:enumeration value="encoded integer"/>
+        <xs:enumeration value="encoded intger"/>
+        <xs:enumeration value="encoded string"/>
+        <xs:enumeration value="encoded value, string"/>
+        <xs:enumeration value="Encoded value"/>
+        <xs:enumeration value="encoded values (see VALUE)"/>
+        <xs:enumeration value="encoded values (see VALUES)"/>
+        <xs:enumeration value="encoded values 1=White/Caucasian 5=Black 9=Others"/>
+        <xs:enumeration value="encoded values, string"/>
+        <xs:enumeration value="Encoded values"/>
+        <xs:enumeration value="encoded variable"/>
+        <xs:enumeration value="encoded_value"/>
+        <xs:enumeration value="encoded, string"/>
+        <xs:enumeration value="encoded,string"/>
+        <xs:enumeration value="encoded"/>
+        <xs:enumeration value="enocded value"/>
+        <xs:enumeration value="enumerated integer"/>
+        <xs:enumeration value="factor"/>
+        <xs:enumeration value="float, encoded value"/>
+        <xs:enumeration value="float, integer, string"/>
+        <xs:enumeration value="float"/>
+        <xs:enumeration value="Frequency"/>
+        <xs:enumeration value="ID"/>
+        <xs:enumeration value="int"/>
+        <xs:enumeration value="Integer, Calculated Value"/>
+        <xs:enumeration value="integer, decimal, encoded value"/>
+        <xs:enumeration value="integer, decimal, encoded values"/>
+        <xs:enumeration value="integer, decimal"/>
+        <xs:enumeration value="integer, encoded integer"/>
+        <xs:enumeration value="integer, encoded string"/>
+        <xs:enumeration value="Integer, encoded value"/>
+        <xs:enumeration value="integer, encoded values"/>
+        <xs:enumeration value="integer, encoded"/>
+        <xs:enumeration value="integer, primary key"/>
+        <xs:enumeration value="integer, string"/>
+        <xs:enumeration value="integer,encoded value"/>
+        <xs:enumeration value="integer,string"/>
+        <xs:enumeration value="integer; encoded values"/>
+        <xs:enumeration value="INTEGER"/>
+        <xs:enumeration value="Integers"/>
+        <xs:enumeration value="interger"/>
+        <xs:enumeration value="List"/>
+        <xs:enumeration value="long int"/>
+        <xs:enumeration value="long"/>
+        <xs:enumeration value="mixed value- integer; string"/>
+        <xs:enumeration value="mixed values (decimal, integer)"/>
+        <xs:enumeration value="mixed values, string, integers"/>
+        <xs:enumeration value="mixed values"/>
+        <xs:enumeration value="mixed"/>
+        <xs:enumeration value="NA"/>
+        <xs:enumeration value="Num, 2"/>
+        <xs:enumeration value="Num"/>
+        <xs:enumeration value="number"/>
+        <xs:enumeration value="Numeral"/>
+        <xs:enumeration value="numeric, encoded value"/>
+        <xs:enumeration value="numeric, encoded values"/>
+        <xs:enumeration value="numeric, encoded"/>
+        <xs:enumeration value="Numeric"/>
+        <xs:enumeration value="Random integer"/>
+        <xs:enumeration value="real, encoded value"/>
+        <xs:enumeration value="real"/>
+        <xs:enumeration value="sting"/>
+        <xs:enumeration value="str1"/>
+        <xs:enumeration value="str12"/>
+        <xs:enumeration value="str22"/>
+        <xs:enumeration value="str25"/>
+        <xs:enumeration value="str36"/>
+        <xs:enumeration value="String and Integer"/>
+        <xs:enumeration value="String integer"/>
+        <xs:enumeration value="string, categorical"/>
+        <xs:enumeration value="string, decimal"/>
+        <xs:enumeration value="string, encoded string"/>
+        <xs:enumeration value="String, Encoded value"/>
+        <xs:enumeration value="string, encoded values"/>
+        <xs:enumeration value="string, encoded"/>
+        <xs:enumeration value="string, integer"/>
+        <xs:enumeration value="string,encoded value"/>
+        <xs:enumeration value="string; coded"/>
+        <xs:enumeration value="STRING"/>
+        <xs:enumeration value="text"/>
+        <xs:enumeration value="time"/>
+        <xs:enumeration value="TinyInt"/>
+        <xs:enumeration value="value"/>
+        <xs:enumeration value="year"/>
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="9"/>
+        <xs:enumeration value="bool"/>
+        <xs:enumeration value="CATEGORICAL"/>
+        <xs:enumeration value="Character"/>
+        <xs:enumeration value="coded string"/>
+        <xs:enumeration value="continuous decimal"/>
+        <xs:enumeration value="continuous"/>
+        <xs:enumeration value="decimal, encoded values"/>
+        <xs:enumeration value="decimal, integer, encoded string"/>
+        <xs:enumeration value="DECIMAL"/>
+        <xs:enumeration value="decimals, calculated"/>
+        <xs:enumeration value="encode value"/>
+        <xs:enumeration value="encoded integer, encoded string"/>
+        <xs:enumeration value="encoded integer; encoded string"/>
+        <xs:enumeration value="encoded string, integer"/>
+        <xs:enumeration value="encoded string, string"/>
+        <xs:enumeration value="Encoded string"/>
+        <xs:enumeration value="encoded value, integer"/>
+        <xs:enumeration value="Encoded Value"/>
+        <xs:enumeration value="encoded Values"/>
+        <xs:enumeration value="Encoded"/>
+        <xs:enumeration value="encoding"/>
+        <xs:enumeration value="endocded values"/>
+        <xs:enumeration value="enumerated text"/>
+        <xs:enumeration value="floating point"/>
+        <xs:enumeration value="INT"/>
+        <xs:enumeration value="integer (GAIN2) or string (NIMH_nonGAIN_Schizophrenia)"/>
+        <xs:enumeration value="integer range"/>
+        <xs:enumeration value="integer, calculated value"/>
+        <xs:enumeration value="integer, encoded value, string"/>
+        <xs:enumeration value="Integer, Encoded value"/>
+        <xs:enumeration value="Integer, encoded values"/>
+        <xs:enumeration value="Integer, ncoded value"/>
+        <xs:enumeration value="integer, string, encoded value"/>
+        <xs:enumeration value="Integer, string"/>
+        <xs:enumeration value="integer,encoded"/>
+        <xs:enumeration value="interger, encoded value"/>
+        <xs:enumeration value="interger, string"/>
+        <xs:enumeration value="liters"/>
+        <xs:enumeration value="mixed value- integer; decimal"/>
+        <xs:enumeration value="mixed value"/>
+        <xs:enumeration value="Not blank = Filled in"/>
+        <xs:enumeration value="Num, 3"/>
+        <xs:enumeration value="Num, 8"/>
+        <xs:enumeration value="number or encoded value"/>
+        <xs:enumeration value="NUMBER"/>
+        <xs:enumeration value="numeric, float"/>
+        <xs:enumeration value="NUMERIC"/>
+        <xs:enumeration value="outc_cancer_rel4.pdf"/>
+        <xs:enumeration value="Random Integer"/>
+        <xs:enumeration value='specimen_results_readme.docx"'/>
+        <xs:enumeration value="str10"/>
+        <xs:enumeration value="str14"/>
+        <xs:enumeration value="str16"/>
+        <xs:enumeration value="str18"/>
+        <xs:enumeration value="str19"/>
+        <xs:enumeration value="str2"/>
+        <xs:enumeration value="str20"/>
+        <xs:enumeration value="str3"/>
+        <xs:enumeration value="str4"/>
+        <xs:enumeration value="str40"/>
+        <xs:enumeration value="str5"/>
+        <xs:enumeration value="str6"/>
+        <xs:enumeration value="str8"/>
+        <xs:enumeration value="str9"/>
+        <xs:enumeration value="String, encoded integer"/>
+        <xs:enumeration value="String, encoded value"/>
+        <xs:enumeration value="String, encoded"/>
+        <xs:enumeration value="String,encoded value"/>
+        <xs:enumeration value="String. Encoded value"/>
+        <xs:enumeration value="Text"/>
+        <xs:enumeration value="version 1: time frame - SHARe changed to "/>
+        <xs:enumeration value="whole number"/>
+        <xs:enumeration value="Years old"/>
+        <xs:enumeration value="years"/>
+        <xs:enumeration value=" "/>
+        <xs:enumeration value='"'/>
+        <xs:enumeration value="Calculated, Integer"/>
+        <xs:enumeration value="Char, 13"/>
+        <xs:enumeration value="DATETIME"/>
+        <xs:enumeration value="Encoded Integer, encoded string"/>
+        <xs:enumeration value="encoded string, encoded integer"/>
+        <xs:enumeration value="encoded string, string, integer"/>
+        <xs:enumeration value="ENCODED VALUE"/>
+        <xs:enumeration value="Encoded Values"/>
+        <xs:enumeration value="f130v8_2.pdf"/>
+        <xs:enumeration value="Feet"/>
+        <xs:enumeration value="floading point"/>
+        <xs:enumeration value="Integar"/>
+        <xs:enumeration value="integer, encoded integer,  encoded string"/>
+        <xs:enumeration value="integer, encoded integer, encoded string"/>
+        <xs:enumeration value="Integer, Encoded Value"/>
+        <xs:enumeration value="Integer, encoded"/>
+        <xs:enumeration value="integer, measured value"/>
+        <xs:enumeration value="integer, string, encoded string"/>
+        <xs:enumeration value="Interger"/>
+        <xs:enumeration value="Num, 4"/>
+        <xs:enumeration value="Number"/>
+        <xs:enumeration value="str11"/>
+        <xs:enumeration value="str120"/>
+        <xs:enumeration value="str17"/>
+        <xs:enumeration value="str29"/>
+        <xs:enumeration value="str37"/>
+        <xs:enumeration value="str7"/>
+        <xs:enumeration value="string, encoded value"/>
+        <xs:enumeration value="String, Integer"/>
+        <xs:enumeration value="TEXT"/>
+        <xs:enumeration value="Time"/>
+        <xs:enumeration value="version 1: time frame - SHARe changed to "/>
+        <xs:enumeration value="_"/>
+        <xs:enumeration value="Char, 1"/>
+        <xs:enumeration value="DATE"/>
+        <xs:enumeration value="Encoded String"/>
+        <xs:enumeration value="str31"/>
+        <xs:enumeration value="String, Encoded Value"/>
+        <xs:enumeration value="version 1: time frame - SHARe changed to "/>
+        <xs:enumeration value=""/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="unit" type="xs:string"/>
+  <xs:element name="logical_min" type="xs:float"/>
+  <xs:element name="logical_max" type="xs:float"/>
+  <xs:element name="coll_interval" type="xs:string"/>
+  <xs:element name="value">
+    <xs:complexType mixed="true">
+      <xs:attribute name="code" use="optional" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="has_coll" type="xs:integer"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="comment" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  trino-db:
+    image: trino-controlled
+    container_name: trino
+    ports:
+      - "8080:8080"
+  dnastack-data-connect-db:
+    image: postgres
+    container_name: postgres-data-connect-db
+    environment:
+      - POSTGRES_USER=dataconnecttrino
+      - POSTGRES_PASSWORD=dataconnecttrino
+    ports:
+      - "15432:5432"
+  dev-data-connect:
+    depends_on:
+       - trino-db
+       - dnastack-data-connect-db
+    image: ianfore/data-connect-trino:dev
+    container_name: dev-data-connect
+    ports:
+      - "8089:8089"
+    volumes:
+        - ../../dev/data-connect-models:/models
+    environment:
+      - TRINO_DATASOURCE_URL=http://host.docker.internal:8080
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:15432/dataconnecttrino
+      - SPRING_PROFILES_ACTIVE=no-auth
+volumes:
+    models:

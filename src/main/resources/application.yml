@@ -41,6 +41,7 @@ app:
       resource: "${app.indexing-service.base-uri}"
     publisher-catalog-name: publisher_data
   file-datamodel-supplier:
+  datadict-datamodel-supplier:
   query-cleanup:
     cron-interval: "*/10 * * ? * *" # Every 10 seconds
     timeout-in-seconds: 120
