@@ -23,3 +23,5 @@ README.html
 env\.sh
 
 *episode_xjc*.xjb
+
+.dockerenv
